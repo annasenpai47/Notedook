@@ -1,4 +1,4 @@
-package Notebook;
+package Notebook.model;
 
 public enum Group {
     KN, AND, PP;

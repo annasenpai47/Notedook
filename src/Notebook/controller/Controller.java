@@ -1,6 +1,6 @@
 package Notebook.controller;
 
-import Notebook.Group;
+import Notebook.model.Group;
 import Notebook.model.Model;
 import Notebook.view.View;
 
@@ -11,20 +11,20 @@ import static Notebook.view.TextConstant.*;
 
 public class Controller {
 
-    private Model model;
-    private View view;
+    private final Model model;
+    private final View view;
 
-    private static String NAMES = "[а-яА-Яa-zA-Z]{2,}[-]?[а-яА-Яa-zA-Z]*\\s*";
-    private static String UNNUL = "[\\D]+.*";
-    private static String NUM_COUSE = "[\\d]{1}";
-    private static String DOM_TEL = "[\\d]{6}";
-    private static String MOD_TEL = "[+]?([3]{1}[8]{1})?[0]{1}[\\d]{9}";
-    private static String EMAIL2 = "[\\d\\D]+[@]{1}[g]?[m]{1}[a]{1}[i]{1}[l]{1}[.]{1}(([c]{1}[o]{1}[m]{1})?([r]{1}(u){1})?){1}]";
-    private static String EMAIL = "[\\d\\D]+[@]{1}[\\D]+[.]{1}[\\D]+";
-    private static String SKYPE = "[a-zA-Z]{3,}";
-    private static String INDEX = "[\\d]{5}";
-    private static String DOM = "[\\d]+.*";
-    private static String KV = "[^0][\\d]+";
+    private static final String NAMES = "[а-яА-Яa-zA-Z]{2,}[-]?[а-яА-Яa-zA-Z]*\\s*";
+    private static final String UNNUL = "[\\D]+.*";
+    private static final String NUM_COUSE = "[\\d]{1}";
+    private static final String DOM_TEL = "[\\d]{6}";
+    private static final String MOD_TEL = "[+]?([3]{1}[8]{1})?[0]{1}[\\d]{9}";
+    private static final String EMAIL2 = "[\\d\\D]+[@]{1}[g]?[m]{1}[a]{1}[i]{1}[l]{1}[.]{1}(([c]{1}[o]{1}[m]{1})?([r]{1}(u){1})?){1}]";
+    private static final String EMAIL = "[\\d\\D]+[@]{1}[\\D]+[.]{1}[\\D]+";
+    private static final String SKYPE = "[a-zA-Z]{3,}";
+    private static final String INDEX = "[\\d]{5}";
+    private static final String DOM = "[\\d]+.*";
+    private static final String KV = "[^0][\\d]+";
 
     Scanner sc = new Scanner(System.in);
 

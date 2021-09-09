@@ -1,7 +1,5 @@
 package Notebook.model;
 
-import Notebook.Group;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
