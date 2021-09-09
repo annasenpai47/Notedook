@@ -3,6 +3,7 @@ package Notebook.view;
 public interface TextConstant {
 
     String WRONG_DATA = "input.wrong.data";
+
     String SURNAME = "input.surname";
     String NAME = "input.name";
     String BATKO = "input.batko";
