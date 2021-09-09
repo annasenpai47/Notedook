@@ -11,8 +11,8 @@ import static Notebook.view.TextConstant.*;
 
 public class Controller {
 
-    private final Model model;
-    private final View view;
+    private Model model;
+    private View view;
 
     private static final String NAMES = "[а-яА-Яa-zA-Z]{2,}[-]?[а-яА-Яa-zA-Z]*\\s*";
     private static final String UNNUL = "[\\D]+.*";
@@ -33,7 +33,12 @@ public class Controller {
         this.view = view;
     }
 
+    public void registration(){
+        InputNewNotebook inputNewNotebook = new InputNewNotebook(view,sc);
 
+
+    }
+/*
     public void startProgram(){
         enterName();
         enterAddInfo();
@@ -42,21 +47,24 @@ public class Controller {
         model.setDate();
         model.printInfo();
 
-    }
 
+
+
+    }*/
+/*
     private void enterName(){
         String surname, name, batko;
-        view.entrSMTH(SURNAME);
+        view.printSMTH(SURNAME);
         while (!(surname = sc.nextLine()).matches(NAMES)) {
-            view.entrSMTH(WRONG_DATA);
+            view.printSMTH(WRONG_DATA);
         }
-        view.entrSMTH(NAME);
+        view.printSMTH(NAME);
         while (!(name = sc.nextLine()).matches(NAMES)) {
-            view.entrSMTH(WRONG_DATA);
+            view.printSMTH(WRONG_DATA);
         }
-        view.entrSMTH(BATKO);
+        view.printSMTH(BATKO);
         while (!(batko = sc.nextLine()).matches(NAMES)) {
-            view.entrSMTH(WRONG_DATA);
+            view.printSMTH(WRONG_DATA);
         }
         model.setFIO(surname, name, batko);
     }
@@ -65,15 +73,15 @@ public class Controller {
         String nick, com, gr, c;
         Group group = null;
         boolean loop = true;
-        view.entrSMTH(NICK);
+        view.printSMTH(NICK);
         while (!(nick = sc.nextLine()).matches(UNNUL)) {
-            view.entrSMTH(WRONG_DATA);
+            view.printSMTH(WRONG_DATA);
         }
         model.setNick(nick);
-        view.entrSMTH(COM);
+        view.printSMTH(COM);
         com = sc.nextLine();
         model.setCom(com);
-        view.entrSMTH(GROUP);
+        view.printSMTH(GROUP);
         while (loop){
             gr = sc.nextLine();
             switch (gr){
@@ -90,7 +98,7 @@ public class Controller {
                     loop = false;
                     break;
                 default:
-                    view.entrSMTH(WRONG_GROUP);
+                    view.printSMTH(WRONG_GROUP);
                     for (Group el: Group.values()){
                         System.out.print(el + " ");
                     }
@@ -98,9 +106,9 @@ public class Controller {
                     break;
             }
         }
-        view.entrSMTH(COURSE);
+        view.printSMTH(COURSE);
         while (!((c = sc.nextLine()).matches(NUM_COUSE) && (Integer.parseInt(c) > 0 && Integer.parseInt(c) < 7 ))) {
-            view.entrSMTH(WRONG_COURSE);
+            view.printSMTH(WRONG_COURSE);
         }
         model.setGroup(group, Integer.parseInt(c));
 
@@ -108,33 +116,33 @@ public class Controller {
 
     private void enterConnect(){
         String s;
-        view.entrSMTH(DOM_TEL);
+        view.printSMTH(DOM_TEL);
         while (!(s = sc.nextLine()).matches(DOM_TEL)) {
-            view.entrSMTH(WRONG_DATA);
+            view.printSMTH(WRONG_DATA);
         }
         model.setDom_tel(s);
 
-        view.entrSMTH(MOD_TEL);
+        view.printSMTH(MOD_TEL);
         while (!(s = sc.nextLine()).matches(MOD_TEL)){
-            view.entrSMTH(WRONG_DATA);
+            view.printSMTH(WRONG_DATA);
         }
         model.setMod_tel(s);
 
-        view.entrSMTH(ADD_MOD_TEL);
+        view.printSMTH(ADD_MOD_TEL);
         while (!((s = sc.nextLine()).matches(MOD_TEL) || s.equals("-"))){
-            view.entrSMTH(WRONG_DATA);
+            view.printSMTH(WRONG_DATA);
         }
         model.setMod_tel_add(s);
 
-        view.entrSMTH(EMAIL);
+        view.printSMTH(EMAIL);
         while (!(s = sc.nextLine()).matches(EMAIL)){
-            view.entrSMTH(WRONG_DATA);
+            view.printSMTH(WRONG_DATA);
         }
         model.setEmail(s);
 
-        view.entrSMTH(SKYPE);
+        view.printSMTH(SKYPE);
         while (!(s = sc.nextLine()).matches(SKYPE)){
-            view.entrSMTH(WRONG_DATA);
+            view.printSMTH(WRONG_DATA);
         }
         model.setSkype(s);
     }
@@ -142,32 +150,32 @@ public class Controller {
     private void enterAddress(){
         String index, city, street, dom, kv;
 
-        view.entrSMTH(INDEX);
+        view.printSMTH(INDEX);
         while (!(index = sc.nextLine()).matches(INDEX)) {
-            view.entrSMTH(WRONG_DATA);
+            view.printSMTH(WRONG_DATA);
         }
 
-        view.entrSMTH(CITY);
+        view.printSMTH(CITY);
         while (!(city = sc.nextLine()).matches(NAMES)) {
-            view.entrSMTH(WRONG_DATA);
+            view.printSMTH(WRONG_DATA);
         }
 
-        view.entrSMTH(STREET);
+        view.printSMTH(STREET);
         while (!(street = sc.nextLine()).matches(NAMES)) {
-            view.entrSMTH(WRONG_DATA);
+            view.printSMTH(WRONG_DATA);
         }
 
-        view.entrSMTH(DOM);
+        view.printSMTH(DOM);
         while (!(dom = sc.nextLine()).matches(DOM)) {
-            view.entrSMTH(WRONG_DATA);
+            view.printSMTH(WRONG_DATA);
         }
 
-        view.entrSMTH(APART);
+        view.printSMTH(APART);
         while (!((kv = sc.nextLine()).matches(KV) || kv.equals("-"))) {
-            view.entrSMTH(WRONG_DATA);
+            view.printSMTH(WRONG_DATA);
         }
 
         model.setAddress(index,city,street,dom,kv);
     }
-
+*/
 }
