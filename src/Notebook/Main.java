@@ -1,6 +1,5 @@
 package Notebook;
 
-
 import Notebook.controller.Controller;
 import Notebook.model.Model;
 import Notebook.view.View;
