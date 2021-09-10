@@ -1,5 +1,7 @@
 package Notebook.controller;
 
+import Notebook.model.DB.DBNotebook;
+import Notebook.model.DB.NotUniqueNickException;
 import Notebook.model.Model;
 import Notebook.view.View;
 
@@ -19,12 +21,24 @@ public class Controller {
         this.view = view;
     }
 
-    public void registration(){
+    public void registration() {
         InputNewNotebook inputNewNotebook = new InputNewNotebook(view,sc);
 
         String [] s = inputNewNotebook.inputName();
         model.setFIO(s[0], s[1], s[2]);
-        model.setNick(inputNewNotebook.inputNick());
+        String nick = null;
+        try {
+            nick = inputNewNotebook.inputNick();
+        }
+        catch (NotUniqueNickException e){
+            e.printStackTrace();
+            try {
+                nick = inputNewNotebook.inputNick();
+            } catch (NotUniqueNickException notUniqueNickException) {
+                notUniqueNickException.printStackTrace();
+            }
+        }
+        model.setNick(nick);
         model.setCom(inputNewNotebook.inputCom());
         model.setGroup(inputNewNotebook.inputCroup(), inputNewNotebook.inputCourse());
         model.setDom_tel(inputNewNotebook.inputDomTel());

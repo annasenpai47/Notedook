@@ -1,5 +1,7 @@
 package Notebook.controller;
 
+import Notebook.model.DB.DBNotebook;
+import Notebook.model.DB.NotUniqueNickException;
 import Notebook.model.Group;
 import Notebook.view.View;
 
@@ -27,9 +29,13 @@ public class InputNewNotebook {
         return s;
     }
 
-    public String inputNick() {
+    public String inputNick() throws NotUniqueNickException {
         CorrectInput utilityController = new CorrectInput(sc, view);
-        return utilityController.inputStringValueWithScanner(NICK, NICK_REGEX);
+        String s = utilityController.inputStringValueWithScanner(NICK, NICK_REGEX);
+        if (DBNotebook.checkLogin(s)){
+            throw new NotUniqueNickException("Not Unique Nick", s);
+        }
+        return s;
     }
 
     public String inputCom(){
