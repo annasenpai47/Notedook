@@ -8,7 +8,9 @@ public class Model {
     private String nick, com;
     private Group group;
     private String mod_tel, mod_tel_add, dom_tel, skype, email;
-    private String address, FIO, date;
+    private String address;
+    private String FIO;
+    private String date;
 
 
     public void setFIO(String surName, String name, String batko){
@@ -58,8 +60,7 @@ public class Model {
     }
 
     public String transFIO(String surName, String name, String batko){
-        String s = surName.toUpperCase().charAt(0) + surName.substring(1).trim() + " "
-                + name.toUpperCase().charAt(0)+". " + batko.toUpperCase().charAt(0) + ".";
+        String s = surName.trim() + " " + name.charAt(0)+". " + batko.charAt(0) + ".";
         return s;
     }
 
@@ -72,18 +73,33 @@ public class Model {
         return s;
     }
 
+//?
+    public String getInfo(){
+        StringBuilder sb = new StringBuilder(FIO);
+        sb.append(" ");
+        sb.append(nick);
+        sb.append("\n");
+        sb.append(com);
+        sb.append("\n");
+        sb.append(group.name());
+        sb.append("-");
+        sb.append(group.getCourse());
+        sb.append("\n");
+        sb.append(dom_tel);
+        sb.append("\n");
+        sb.append(mod_tel);
+        sb.append("\n");
+        sb.append(mod_tel_add);
+        sb.append("\n");
+        sb.append(skype);
+        sb.append(" ");
+        sb.append(email);
+        sb.append("\n");
+        sb.append(address);
+        sb.append("\n");
+        sb.append(date);
 
-    public void printInfo(){
-        System.out.println(FIO + " " + nick + " " + com);
-        System.out.println(group.name() + "-" + group.getCourse());
-        System.out.println(dom_tel);
-        System.out.println(mod_tel);
-        if(!mod_tel_add.equals("-")){
-            System.out.println(mod_tel_add);
-        }
-        System.out.println(skype + " " + email);
-        System.out.println(address);
-        System.out.println(date);
+        return sb.toString();
     }
 
 }

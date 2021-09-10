@@ -7,12 +7,13 @@ import static Notebook.view.TextConstant.*;
 
 public class View {
 
-    private static String MESSAGES_BUNDLE_NAME = "message";
-    public static final ResourceBundle bundle =
+    private static String MESSAGES_BUNDLE_NAME = "messages";
+
+    public final static ResourceBundle bundle =
             ResourceBundle.getBundle(
                     MESSAGES_BUNDLE_NAME,
-                    //new Locale("ua", "UA"));  // Ukrainian
-                    new Locale("en"));
+                    new Locale("ua"));
+                    //new Locale("en"));
 
     public void printSMTH(String message){
         System.out.println(message);
