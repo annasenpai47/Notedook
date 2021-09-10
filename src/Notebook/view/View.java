@@ -12,8 +12,8 @@ public class View {
     public final static ResourceBundle bundle =
             ResourceBundle.getBundle(
                     MESSAGES_BUNDLE_NAME,
-                    new Locale("ua"));
-                    //new Locale("en"));
+                    //new Locale("ua"));
+                    new Locale("en"));
 
     public void printSMTH(String message){
         System.out.println(message);
